@@ -21,6 +21,5 @@
 | `python3` + pwntools | exploit scripts, ROP, ret2dlresolve |
 | `ROPgadget` / pwntools `ROP` | gadget search |
 | `qemu-system-x86_64` | booting disk image |
-| SSH into Kali VM | remote analysis environment |
 
 Run: `pip install pwntools` then `python3 <folder>/solver.py`.
