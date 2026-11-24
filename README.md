@@ -10,4 +10,17 @@
 | 06 Linker Lite | `wctf{n0_le4k_n0_pr0blem_ret2dlresolve}` |
 | 07 No Open Door | `wctf{y0u_f0rg0t_t0_cl0se_0penat2}` |
 
+## Tools
+
+| Tool | Use |
+|---|---|
+| `checksec` | binary protections |
+| `file`, `strings`, `nm`, `readelf`, `objdump` | recon and disassembly |
+| `radare2`, Ghidra | stripped/static binary analysis |
+| `gdb` + GEF | debugging, crash and syscall inspection |
+| `python3` + pwntools | exploit scripts, ROP, ret2dlresolve |
+| `ROPgadget` / pwntools `ROP` | gadget search |
+| `qemu-system-x86_64` | booting disk image |
+| SSH into Kali VM | remote analysis environment |
+
 Run: `pip install pwntools` then `python3 <folder>/solver.py`.
