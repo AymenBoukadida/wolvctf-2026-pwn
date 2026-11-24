@@ -4,18 +4,11 @@
 
 ## Bug
 
-Queuing an amendment stores a pointer to a public receipt's approval-magic field. Cancelling frees the slot; creating a sealed receipt reuses it. Processing the queue then writes through the stale pointer, approving the sealed receipt.
-
-The magic value is `SEAL` = `0x4c414553`.
+An amendment stores a pointer into a public receipt slot. Cancelling the receipt frees the slot. A new sealed receipt reuses that slot. Processing the queue writes through the old pointer and sets the approval magic on the new receipt.
 
 ## Exploit
 
-1. Create public receipt → ID 1001.
-2. Queue amendment `4c414553` on 1001.
-3. Cancel 1001.
-4. Create sealed receipt → ID 1002, reuses slot 0.
-5. Process queue.
-6. Export 1002.
+Create public receipt 1001 and queue amendment `4c414553`. Cancel 1001. Create sealed receipt 1002 so it reuses slot 0. Process the queue, then export 1002. The stale write approves it and the export prints the flag.
 
 ## Flag
 

