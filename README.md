@@ -10,6 +10,8 @@
 | 06 Linker Lite | `wctf{n0_le4k_n0_pr0blem_ret2dlresolve}` |
 | 07 No Open Door | `wctf{y0u_f0rg0t_t0_cl0se_0penat2}` |
 
+Each folder includes the challenge binary next to its `solver.py`.
+
 ## Tools
 
 | Tool | Use |
